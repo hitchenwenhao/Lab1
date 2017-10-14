@@ -198,6 +198,8 @@ public class shiyan1 {
 					else{
 						System.out.println("1111111111111111111111111111");
 						System.out.println("22222222222222222222222222222222");
+						System.out.println("333333333333333333333333333333333");
+						
 						
 						System.out.println(arr_[queryBridgeWords(word1,word2)[i]]+".");
 					}
