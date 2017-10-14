@@ -1,4 +1,4 @@
-package hushan;
+package hushan;-------
 import java.io.*;
 import java.util.Random;
 
