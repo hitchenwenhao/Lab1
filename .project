@@ -6,7 +6,7 @@
 	</projects>
 	<buildSpec>
  ....
-0000
+00001111
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
