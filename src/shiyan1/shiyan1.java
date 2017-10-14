@@ -1,7 +1,7 @@
-package shiyan1;
+﻿package shiyan1;
 import java.io.*;
 import java.util.Random;
-
+000
 public class shiyan1 {
 	public static String txtStr;
 	public static int size=1;
