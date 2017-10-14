@@ -2,7 +2,7 @@ package hushan;
 import java.io.*;
 import java.util.Random;
 
-
+//hushan is a beautiful girl
 public class huahan {
 	public static String txtStr;
 	public static int size=1;
@@ -14,9 +14,9 @@ public class huahan {
     public static String s3="";
     public static String s4="";
     public static String newtxt="";
-   
-    
-    
+
+
+
 	public static void main(String[] args)throws IOException{
 		// TODO 自动生成的方法存根
 		FileInputStream rf = new FileInputStream("D://tete.txt");
@@ -31,16 +31,16 @@ public class huahan {
 		rf.close();
 		System.out.println(txtStr);
 		String str0=txtStr.replaceAll("\n", " ");
-		String str1 = str0.replaceAll("[\\pP\\p{Punct}]", " ");   
+		String str1 = str0.replaceAll("[\\pP\\p{Punct}]", " ");
         String reg = "[^a-zA-Z ]";
         String str2=str1.replaceAll(reg, "");
         String str3=str2.toLowerCase();
         String [] arr = str3.split("\\s+");   //arr中的元素依次是文本文件中的每个单词（有重复）
         int textsize,i,j,k,l;
-        textsize=arr.length;                   //textsize为单词数组的长度              
+        textsize=arr.length;                   //textsize为单词数组的长度
         int flag;
         arr_=new String [100];
-        arr_[0]=arr[0];                  
+        arr_[0]=arr[0];
         for(j=1;j<textsize;j++)
         	{flag=1;
         	for(k=0;k<j;k++)
@@ -49,16 +49,16 @@ public class huahan {
             if(flag==1)                             //arr_为按顺序的无重复单词构成的数组
             	{size+=1;arr_[size-1]=arr[j];}}    //flag标记单词数组中的第j个单词是否与之前的单词有重复
                           //size代表单词数组中无重复的的单词个数
-        adjmatrix=new int [size][size];             
+        adjmatrix=new int [size][size];
         for(i=0;i<textsize-1;i++)
         {
         	int m,n;
         	m=indexofword(arr[i]);
         	n=indexofword(arr[i+1]);
         	adjmatrix[m][n]+=1;
-        	
+
         }
-        
+
         System.out.println("****************menu******************");
         System.out.println("读入文本并生成有向图");
         System.out.println("展示有向图于D:\\chenwh\\output0");
@@ -70,7 +70,7 @@ public class huahan {
         	s1=in1.readLine();
         	}catch(IOException e){}
         System.out.println("Please enter the second words you want to inquire:");
-        
+
         try{
         	BufferedReader in2 =new BufferedReader(new InputStreamReader (System.in));
         	s2=in2.readLine();
@@ -82,7 +82,7 @@ public class huahan {
         	BufferedReader newtxt_ =new BufferedReader(new InputStreamReader (System.in));
         	newtxt=newtxt_.readLine();
         	}catch(IOException e){}
-        generateNewText(newtxt); 
+        generateNewText(newtxt);
         System.out.println("查询最短路径并显示与D:\\chenwh\\output1");
 	    System.out.println("Please enter the starting point of shortest path that you want to query:");
 	   try{
@@ -97,10 +97,10 @@ public class huahan {
 	  /* String shortestpath=calcShortestPath(s3,s4);
 	  if(shortestpath.equals("Words exception!"))
 		  System.out.println("Words exception!");
-	  
+
 	  else if(shortestpath.equals("No path"))
 		  System.out.println("No path");
-	  
+
 	  else
 	  {
 		  String [] pathnumberarr = shortestpath.split("->");
@@ -114,12 +114,12 @@ public class huahan {
 	  }*/
 	  System.out.println("随机游走并生成图于D:\\chenwh\\output2");
 	  randomWalk();
-	   
+
 	}
-	
-	
-	
-	
+
+
+
+
 	public static int indexofword(String word)
     {
     	int i,flag=0;
@@ -132,22 +132,22 @@ public class huahan {
     	    return -1;
     	else
     		return i;
-    } 
-	 
-  	
-	
+    }
+
+
+
 	static boolean  Edge_Existed(int index_1,int index_2)
 	{
 		if(adjmatrix[index_1][index_2]>0)
 			return true;
 		else
 			return false;
-	} 
-	
-	
+	}
+
+
 	static int[] queryBridgeWords(String word1, String word2) {
 		int index_1,index_2;
-		int BridgeWordsNum=0; 
+		int BridgeWordsNum=0;
 		int [] BridgeWordsIndex=new int[5];
 		index_1=indexofword(word1);
 		index_2=indexofword(word2);
@@ -159,19 +159,19 @@ public class huahan {
 		for(index=0;index<size;index++)
 		{
 			if(index!=index_1 && index!=index_2)
-				if(Edge_Existed(index_1,index)) 
+				if(Edge_Existed(index_1,index))
 					if(Edge_Existed(index,index_2))
 					{
 						BridgeWordsIndex[BridgeWordsNum+1]=index;
 						BridgeWordsNum+=1;
 					}
-		} 
+		}
 		BridgeWordsIndex[0]=BridgeWordsNum;
 		return BridgeWordsIndex;
 }//查询桥接词
-	
-	
-	
+
+
+
 	static void printBridgeWords(String word1, String word2){
 		int i;
 		int index_1,index_2;
@@ -196,40 +196,40 @@ public class huahan {
 					}
 				}
 			}
-		
+
 	}//输出桥接词
-	
-	
-	
+
+
+
 	static String generateNewText(String inputText) {
 		 int i,length;
 		 String [] newtxt = inputText.split("\\s+");
 		 length=newtxt.length;
-		 for(i=0;i<length-1;i++) 
+		 for(i=0;i<length-1;i++)
 		 {
 			 System.out.print(newtxt[i]+" ");
 			 if(indexofword(newtxt[i])!=-1)
 			{
 			 if (queryBridgeWords(newtxt[i],newtxt[i+1])[0]!=0)
-			 {				
+			 {
 				 System.out.print(arr_[queryBridgeWords(newtxt[i],newtxt[i+1])[1]]+" ");
 				 }
 			 }
-		  } 
-		 System.out.println(newtxt[length-1]); 
+		  }
+		 System.out.println(newtxt[length-1]);
 		 return null;
 	}//根据bridge word生成新文本
-	
 
-	
+
+
 	static String calcShortestPath(String word1, String word2) {
 		int start=indexofword(word1);
 		int end=indexofword(word2);
 		String s = null;
 		if(start==-1||end==-1)
 			s="Words exception!";
-		    
-		else 
+
+		else
 		{
 			int weight[][]=new int[size][size];
 			String[] path=new String[size];
@@ -246,44 +246,44 @@ public class huahan {
 					if(i!=j&&weight[i][j]==0)
 						weight[i][j]=999;
 				}
-			int[] shortPath = new int[size];//存放从start到其他各点的最短路径  
-			int[] visited = new int[size];  //标记当前该顶点的最短路径是否已经求出,1表示已求出  
-	        shortPath[start] = 0;  
+			int[] shortPath = new int[size];//存放从start到其他各点的最短路径
+			int[] visited = new int[size];  //标记当前该顶点的最短路径是否已经求出,1表示已求出
+	        shortPath[start] = 0;
 	        visited[start] = 1; //初始化
-	        for(int count = 1;count <size;count++)  
-	        {  
-	            //选出一个距离初始顶点start最近的未标记顶点  
-	            int k = -1;  
-	            int dmin = Integer.MAX_VALUE;  
-	            
-	            for(int i = 0;i < size;i++)  
-	            {  
-	                if(visited[i] == 0 && weight[start][i] < dmin)  
-	                {  
-	                    dmin = weight[start][i];  
-	                    k = i;  
-	                    
-	                }  
-	            }  
-	            
-	            
-	            
-	            //将新选出的顶点标记为已求出最短路径，且到start的最短路径就是dmin  
+	        for(int count = 1;count <size;count++)
+	        {
+	            //选出一个距离初始顶点start最近的未标记顶点
+	            int k = -1;
+	            int dmin = Integer.MAX_VALUE;
+
+	            for(int i = 0;i < size;i++)
+	            {
+	                if(visited[i] == 0 && weight[start][i] < dmin)
+	                {
+	                    dmin = weight[start][i];
+	                    k = i;
+
+	                }
+	            }
+
+
+
+	            //将新选出的顶点标记为已求出最短路径，且到start的最短路径就是dmin
 	            shortPath[k] = dmin;
-	            visited[k] = 1;  
+	            visited[k] = 1;
 	            if(k==end)
 	            	{s= path[k];break;}
-	            
-	            //以k为中间点，修正从start到未访问各点的距离  
-	            for(int i = 0;i < size;i++)  
-	            {  
-	                if(visited[i] == 0 && weight[start][k] + weight[k][i] < weight[start][i])  
-	                {  
-	                    weight[start][i] = weight[start][k] + weight[k][i];  
-	                    path[i]=path[k]+"->"+i;  
-	                }  
-	            }              
-	        }  
+
+	            //以k为中间点，修正从start到未访问各点的距离
+	            for(int i = 0;i < size;i++)
+	            {
+	                if(visited[i] == 0 && weight[start][k] + weight[k][i] < weight[start][i])
+	                {
+	                    weight[start][i] = weight[start][k] + weight[k][i];
+	                    path[i]=path[k]+"->"+i;
+	                }
+	            }
+	        }
 	        if(visited[end]==0)
 	        	return "No path!";
 	        else{
@@ -294,10 +294,10 @@ public class huahan {
 			  {
 				  pathnamearr[b]=arr_[Integer.parseInt(pathnumberarr[b])];
 			  }
-			  
+
 			  GraphViz gv = new GraphViz();
 		      gv.addln(gv.start_graph());
-		      int i,j; 
+		      int i,j;
 			  for(i=0;i<size;i++)
 	      	  for(j=0;j<size;j++)
 	      	  {
@@ -313,16 +313,16 @@ public class huahan {
 	          String type = "gif";
 	          File out = new File("D:\\chenwh\\output1." + type);    // Windows
 	          gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
-	    
+
 		      }
 		}
 		return s;
-		
+
 	}
-	
-	
-	
-	
+
+
+
+
 static int Randomindex(int start,int choice)
 {
 	int num=-1,flag,index=-1;
@@ -332,7 +332,7 @@ static int Randomindex(int start,int choice)
 		index+=1;
 		if(adjmatrix[start][i]>0)
 			{num+=1;flag=1;}
-		
+
 		if(num==choice&&flag==1)
 		{
 			break;
@@ -340,8 +340,8 @@ static int Randomindex(int start,int choice)
 	}
 	return index;
 }
-	
-	
+
+
 
 static void randomWalk(){
      int Vertexindex = new Random().nextInt(size);
@@ -362,7 +362,7 @@ static void randomWalk(){
     		 if(i>0)
     			 {count++;endFlag=false;}
     	 }
-    	 
+
     	 if(endFlag==true)
     	 {
     		 break;
@@ -397,7 +397,7 @@ static void randomWalk(){
     String type = "gif";
     File out = new File("D:\\chenwh\\output2." + type);    // Windows
     gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
-    
+
     }
 
 
@@ -407,7 +407,7 @@ static void showDirectedGraph()
 {
 	GraphViz gv = new GraphViz();
     gv.addln(gv.start_graph());
-    int i,j; 
+    int i,j;
 		for(i=0;i<size;i++)
       	for(j=0;j<size;j++)
       	{
@@ -422,6 +422,6 @@ static void showDirectedGraph()
 }
 
 }
-	
 
 
+//chenwenhao is a handsome boy

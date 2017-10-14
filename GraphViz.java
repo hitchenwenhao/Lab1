@@ -22,7 +22,7 @@ package hushan;
 *                                                                            *
 ******************************************************************************
 */
-
+//abcdefghijklmnopqrstuvwxyz
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -59,7 +59,7 @@ import java.io.InputStreamReader;
 *
 * @version v0.4, 2011/02/05 (February) -- Patch of Keheliya Gallaba is added. Now you
 * can specify the type of the output file: gif, dot, fig, pdf, ps, svg, png, etc.
-* @version v0.3, 2010/11/29 (November) -- Windows support + ability 
+* @version v0.3, 2010/11/29 (November) -- Windows support + ability
 * to read the graph from a text file
 * @version v0.2, 2010/07/22 (July) -- bug fix
 * @version v0.1, 2003/12/04 (December) -- first release
@@ -136,7 +136,7 @@ public byte[] getGraph(String dot_source, String type)
       if (dot != null)
       {
          img_stream = get_img_stream(dot, type);
-         if (dot.delete() == false) 
+         if (dot.delete() == false)
             System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
          return img_stream;
       }
@@ -187,11 +187,11 @@ private byte[] get_img_stream(File dot, String type)
 try {
       img = File.createTempFile("graph_", "."+type, new File(GraphViz.TEMP_DIR));
       Runtime rt = Runtime.getRuntime();
-      
+
       // patch by Mike Chenault
       String[] args = {DOT, "-T"+type, dot.getAbsolutePath(), "-o", img.getAbsolutePath()};
       Process p = rt.exec(args);
-      
+
       p.waitFor();
 
 FileInputStream in = new FileInputStream(img.getAbsolutePath());
@@ -200,7 +200,7 @@ FileInputStream in = new FileInputStream(img.getAbsolutePath());
       // Close it if we need to
       if( in != null ) in.close();
 
-if (img.delete() == false) 
+if (img.delete() == false)
          System.err.println("Warning: " + img.getAbsolutePath() + " could not be deleted!");
    }
    catch (java.io.IOException ioe) {
@@ -254,14 +254,14 @@ public String end_graph() {
 
 /**
  * Read a DOT graph from a text file.
- * 
+ *
  * @param input Input text file containing the DOT graph
  * source.
  */
 public void readSource(String input)
 {
  StringBuilder sb = new StringBuilder();
- 
+
  try
  {
   FileInputStream fis = new FileInputStream(input);
@@ -272,12 +272,13 @@ public void readSource(String input)
    sb.append(line);
   }
   dis.close();
- } 
+ }
  catch (Exception e) {
   System.err.println("Error: " + e.getMessage());
  }
- 
+
  this.graph = sb;
 }
 
 } // end of class GraphViz
+//baldgfdkgfjk
