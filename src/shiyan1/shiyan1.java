@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿package shiyan1;
+=======
+﻿package shiyan1;00001111
+>>>>>>> B2
 import java.io.*;
 import java.util.Random;
 000
