@@ -1,4 +1,4 @@
-package shiyan1;
+﻿package shiyan1;0000
 import java.io.*;
 import java.util.Random;
 
