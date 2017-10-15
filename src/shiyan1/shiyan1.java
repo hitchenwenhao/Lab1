@@ -1,7 +1,7 @@
 package shiyan1;
 import java.io.*;
 import java.util.Random;
-
+//chenwenhao dao ci yi you
 public class shiyan1 {
 	public static String txtStr;
 	public static int size=1;
@@ -13,7 +13,7 @@ public class shiyan1 {
     public static String s3="";
     public static String s4="";
     public static String newtxt="";
- 
+
 	public static void main(String[] args) throws IOException{
 		// TODO 自动生成的方法存根
 		FileInputStream rf = new FileInputStream("C://Users//94936//Desktop//tete.txt");
@@ -30,16 +30,16 @@ public class shiyan1 {
 		rf.close();
 		System.out.println(txtStr);
 		String str0=txtStr.replaceAll("\n", " ");
-		String str1 = str0.replaceAll("[\\pP\\p{Punct}]", "");   
+		String str1 = str0.replaceAll("[\\pP\\p{Punct}]", "");
         String reg = "[^a-zA-Z ]";
         String str2=str1.replaceAll(reg, "");
         String str3=str2.toLowerCase();
         String [] arr = str3.split("\\s+");   //arr中的元素依次是文本文件中的每个单词（有重复）
         int textsize,i,j,k,l;
-        textsize=arr.length;                   //textsize为单词数组的长度              
+        textsize=arr.length;                   //textsize为单词数组的长度
         int flag;
         arr_=new String [100];
-        arr_[0]=arr[0];                  
+        arr_[0]=arr[0];
         for(j=1;j<textsize;j++)
         	{flag=1;
         	for(k=0;k<j;k++)
@@ -48,18 +48,18 @@ public class shiyan1 {
             if(flag==1)                             //arr_为按顺序的无重复单词构成的数组
             	{size+=1;arr_[size-1]=arr[j];}}    //flag标记单词数组中的第j个单词是否与之前的单词有重复
                           //size代表单词数组中无重复的的单词个数
-        
+
         for(l=0;l<size;l++){
         	System.out.println(arr_[l]);
         }
-        adjmatrix=new int [size][size];             
+        adjmatrix=new int [size][size];
         for(i=0;i<textsize-1;i++)
         {
         	int m,n;
         	m=indexofword(arr[i]);
         	n=indexofword(arr[i+1]);
         	adjmatrix[m][n]+=1;
-        	
+
         }
         showDirectedGraph();
         System.out.println("****************menu******************");
@@ -79,7 +79,7 @@ public class shiyan1 {
         	BufferedReader newtxt_ =new BufferedReader(new InputStreamReader (System.in));
         	newtxt=newtxt_.readLine();
         	}catch(IOException e){}
-        generateNewText(newtxt); 
+        generateNewText(newtxt);
 	    System.out.println("Please enter the starting point of shortest path that you want to query:");
 	   	try{
        		BufferedReader in3 =new BufferedReader(new InputStreamReader (System.in));
@@ -90,16 +90,16 @@ public class shiyan1 {
        		BufferedReader in4 =new BufferedReader(new InputStreamReader (System.in));
        		s4=in4.readLine();
        		}catch(IOException e){}
-	   
+
 	  calcShortestPath(s3,s4);
 	  randomWalk();
-	   
-	   
-		
+
+
+
 	}
-	
-	
-	
+
+
+
 	public static int indexofword(String word)
     {
     	int i,flag=0;
@@ -113,34 +113,34 @@ public class shiyan1 {
     	else
     		return i;
     } //展示有向图
-	
-	
-	
+
+
+
   	public static void showDirectedGraph(){
-  		int i,j; 
+  		int i,j;
   		for(i=0;i<size;i++)
           	for(j=0;j<size;j++)
           	{
           		if (adjmatrix[i][j]!=0)
           			System.out.println(arr_[i]+"->"+arr_[j]);
           	}
-  	} 
-  	
-  	
-  	
+  	}
+
+
+
 	static boolean  Edge_Existed(int index_1,int index_2)
 	{
 		if(adjmatrix[index_1][index_2]>0)
 			return true;
 		else
 			return false;
-	} 
-	
-	
-	
+	}
+
+
+
 	static int[] queryBridgeWords(String word1, String word2) {
 		int index_1,index_2;
-		int BridgeWordsNum=0; 
+		int BridgeWordsNum=0;
 		int [] BridgeWordsIndex=new int[5];
 		index_1=indexofword(word1);
 		index_2=indexofword(word2);
@@ -152,18 +152,18 @@ public class shiyan1 {
 		for(index=0;index<size;index++)
 		{
 			if(index!=index_1 && index!=index_2)
-				if(Edge_Existed(index_1,index)) 
+				if(Edge_Existed(index_1,index))
 					if(Edge_Existed(index,index_2))
 					{
 						BridgeWordsIndex[BridgeWordsNum+1]=index;
 						BridgeWordsNum+=1;
 					}
-		} 
+		}
 		BridgeWordsIndex[0]=BridgeWordsNum;
 		return BridgeWordsIndex;
 }//查询桥接词
-	
-	
+
+
 	static void printBridgeWords(String word1, String word2){
 		int i;
 		int index_1,index_2;
@@ -199,21 +199,21 @@ public class shiyan1 {
 						System.out.println("1111111111111111111111111111");
 						System.out.println("22222222222222222222222222222222");
 						System.out.println("333333333333333333333333333333333");
-						
-						
+
+
 						System.out.println(arr_[queryBridgeWords(word1,word2)[i]]+".");
 					}
 				}
 			}
-		
+
 	}//输出桥接词
-	
-	
+
+
 	static String generateNewText(String inputText) {
 		 int i,length;
 		 String [] newtxt = inputText.split("\\s+");
 		 length=newtxt.length;
-		 for(i=0;i<length-1;i++) 
+		 for(i=0;i<length-1;i++)
 		 {
 			 System.out.print(newtxt[i]+" ");
 			 if(indexofword(newtxt[i])!=-1)
@@ -221,15 +221,15 @@ public class shiyan1 {
 				 if (queryBridgeWords(newtxt[i],newtxt[i+1])[0]>=1)
 				 {
 					 System.out.print(arr_[queryBridgeWords(newtxt[i],newtxt[i+1])[1]]+" ");
-				 
+
 				 }
 			 }
-		  } 
-		 System.out.println(newtxt[length-1]); 
+		  }
+		 System.out.println(newtxt[length-1]);
 		 return null;
 	}//根据bridge word生成新文本
-	
-	
+
+
 	static String calcShortestPath(String word1, String word2) {
 			int A[][]=new int [size][size];
 			String B[]=new String [size+1];
@@ -290,7 +290,7 @@ public class shiyan1 {
 				    }
 		    		else
 		    		{
-		    			while (true)	
+		    			while (true)
 		    			{
 		    				if(arr_[path[index_1][i]].equals(arr_[index_1])==false)
 		    				{
@@ -306,9 +306,9 @@ public class shiyan1 {
 		    			i=j;
 		    		}
 	    			number[index]=k;
-	    			index++;	
+	    			index++;
 		    		}
-		    	
+
 		    	for(i=0;i<size;i++)
 		    	{
 		    		//System.out.print(number[i]);
@@ -328,7 +328,7 @@ public class shiyan1 {
 		    		System.out.println(arr_[i]);
 		    	}
 		    	}
-		 
+
 		    }
 		    else
 		    {
@@ -337,7 +337,7 @@ public class shiyan1 {
 			    	System.out.println("Sorry,there is no path between two points!");
 			    	return null;
 			    }
-			    else 
+			    else
 			    {
 			    	while(path[index_1][index_2]!=index_1)
 			    	{
@@ -355,7 +355,7 @@ public class shiyan1 {
 			   }
 		    return null;
 }
-	
+
 static String randomWalk(){
 	 String random;
      int result1 = new Random().nextInt(size);
@@ -393,7 +393,7 @@ static String randomWalk(){
     System.out.println(arr_[j]);
     StringBuffer s = new StringBuffer();
     for(int i = 0; i < number; i++)
-    	{ 
+    	{
     	s.append(txt[i]+" ");
     	}
     try{
@@ -406,8 +406,8 @@ static String randomWalk(){
     	}
     return null;//随机游走*/
     }
-    
+
 }
-	
+
 
 
