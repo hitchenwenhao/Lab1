@@ -26,12 +26,12 @@ package hushan;
 *                                                                            *
 ******************************************************************************
 */
-<<<<<<< HEAD
 
-=======
+
 //abcdefghijklmnopqrstuvwxyz
 //stupid teacher
->>>>>>> B2
+
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -290,5 +290,7 @@ public void readSource(String input)
 }
 
 }
+
+
 // end of class GraphViz
 
