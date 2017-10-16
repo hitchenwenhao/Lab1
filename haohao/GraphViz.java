@@ -26,7 +26,7 @@ package hushan;
 *                                                                            *
 ******************************************************************************
 */
-//abcdefghijklmnopqrstuvwxyz
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -284,5 +284,6 @@ public void readSource(String input)
  this.graph = sb;
 }
 
-} // end of class GraphViz
+}
+// end of class GraphViz
 
