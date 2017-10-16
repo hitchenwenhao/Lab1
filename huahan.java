@@ -1,10 +1,13 @@
-<<<<<<< HEAD
+
 package hushan;
 import java.io.*;
 =======
 package hushan;-------
 import java.io.*;000000
->>>>>>> 2
+
+package hushan;-------
+import java.io.*;000000
+>>>>>>> partener/1150310725
 import java.util.Random;
 
 //hushan is a beautiful girl
