@@ -8,6 +8,7 @@ import java.io.*;000000
 import java.util.Random;
 
 //hushan is a beautiful girl
+//stupid teacher
 public class huahan {
 	public static String txtStr;
 	public static int size=1;
