@@ -5,6 +5,11 @@ package hushan;
 import java.io.*;
 import java.util.Random;
 
+<<<<<<< HEAD
+=======
+//hushan is a beautiful girl
+
+>>>>>>> B2
 public class huahan {
 	public static String txtStr;
 	public static int size=1;
