@@ -2,7 +2,7 @@ package hushan;
 import java.io.*;
 import java.util.Random;
 
-//hushan is a beautiful girl
+
 public class huahan {
 	public static String txtStr;
 	public static int size=1;
@@ -311,7 +311,7 @@ public class huahan {
 	          gv.addln(gv.end_graph());
 	          System.out.println(gv.getDotSource());
 	          String type = "gif";
-	          File out = new File("D:\\chenwh\\output1." + type);    // Windows
+	          File out = new File("F:\\ming\\output1." + type);    // Windows
 	          gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 
 		      }
@@ -395,7 +395,7 @@ static void randomWalk(){
     gv.addln(gv.end_graph());
     System.out.println(gv.getDotSource());
     String type = "gif";
-    File out = new File("D:\\chenwh\\output2." + type);    // Windows
+    File out = new File("F:\\ming\\output2." + type);    // Windows
     gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 
     }
@@ -417,11 +417,9 @@ static void showDirectedGraph()
     gv.addln(gv.end_graph());
     System.out.println(gv.getDotSource());
     String type = "gif";
-    File out = new File("D:\\chenwh\\output0." + type);    // Windows
+    File out = new File("F:\\ming\\output0." + type);    // Windows
     gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 }
 
 }
 
-
-//chenwenhao is a handsome boy
