@@ -50,7 +50,7 @@ final class Hushan {
         FileInputStream rf = new FileInputStream("F:\\baoming.txt");
         byte[] buffer = new byte[rf.available()]; //读取到文件尾，动态生成数组
         while (rf.read(buffer) != -1) {
-           // System.out.print(new String(buffer));
+          //  System.out.print(new String(buffer));
             continue;
         }
         txtStr = new String(buffer);
@@ -90,7 +90,7 @@ final class Hushan {
 
         }
 
-        //System.out.println("****************menu******************");
+       // System.out.println("****************menu******************");
         System.out.println("读入文本并生成有向图");
         System.out.println("展示有向图于f/ming");
         showDirectedGraph();
@@ -197,7 +197,7 @@ final class Hushan {
         }
         bridgeWordsIndex[0] = bridgeWordsNum;
         return bridgeWordsIndex;
-    }
+    } //查询桥接词
 
 
     /**.
@@ -251,7 +251,7 @@ final class Hushan {
         }
         System.out.println(newtxt[length - 1]);
         return null;
-    }
+    } //根据bridge word生成新文本
 
 
     /**.
@@ -300,6 +300,9 @@ final class Hushan {
 
                     }
                 }
+
+
+
                 //将新选出的顶点标记为已求出最短路径，且到start的最短路径就是dmin
                 shortPath[k] = dmin;
                 visited[k] = 1;
@@ -401,7 +404,8 @@ final class Hushan {
                 break;
             }
             number += 1;
-            nextVertexnum = new Random().nextInt(count);
+            GetRandom tempRandom = new GetRandom(count);
+            nextVertexnum = tempRandom.getRdom(count); //new Random().nextInt(count);
             nextVertexindex = randomindex(vertexindex, nextVertexnum);
             if (edgePassedBy[vertexindex][nextVertexindex] == 1) {
                 break;
@@ -460,4 +464,17 @@ final class Hushan {
     }
 
 }
+/**.
 
+ * set default mock parameter.（方法说明）
+ * @throws Exception if has error(异常说明)
+ */
+class GetRandom extends Thread{
+    private SecureRandom ran;
+    GetRandom(int seed) {
+        ran = new SecureRandom();
+    }
+    public int getRdom(int seed) {
+        return ran.nextInt(seed);
+    }
+}
