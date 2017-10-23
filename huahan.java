@@ -47,7 +47,7 @@ final class Hushan {
 
     public static void main(String[] args)throws IOException {
         //自动生成的方法存根
-        FileInputStream rf = new FileInputStream("F:\\baoming.txt");
+        FileInputStream rf = new FileInputStream("D:\\tete.txt");
         byte[] buffer = new byte[rf.available()]; //读取到文件尾，动态生成数组
         while (rf.read(buffer) != -1) {
           //  System.out.print(new String(buffer));
@@ -92,7 +92,7 @@ final class Hushan {
 
        // System.out.println("****************menu******************");
         System.out.println("读入文本并生成有向图");
-        System.out.println("展示有向图于f/ming");
+        System.out.println("展示有向图于D:\\chenwh\\output0");
         showDirectedGraph();
         System.out.println("查询桥接词");
         System.out.println("Please enter the frist words you want to inquire:");
@@ -114,7 +114,7 @@ final class Hushan {
             newtxt = newtxt1.readLine();
         } catch (IOException e) { }
         generateNewText(newtxt);
-        System.out.println("查询最短路径并显示与f/ming");
+        System.out.println("查询最短路径并显示与D:\\chenwh\\output1");
         System.out.println("Please enter the starting point of shortest path that you want to query:");
         try {
             BufferedReader in3 = new BufferedReader(new InputStreamReader(System.in));
